@@ -1,0 +1,58 @@
+>> Taking input from command line:
+    -- raw_input()
+    -- Conversion to int can be done as follows: int(raw_input())
+    -- A list can be obtained as: [int(x) for x in raw_input().split()]
+    -- Tuples/countable multi-variable can be created as: a,b = map(int, raw_input().split())
+    -- Note: Python3's input() is similar to Python2's raw_input() and raw_input() does not exist.
+
+>> Printing utilities:
+    -- print('a') prints 'a' (without quotes) to the prompt.
+    -- print 'a' also does as above in Python2.
+    -- print 'a', does not print a newline. 
+    -- print('1', end=' ') prints '1 ' on the prompt. End marker can be an empty string.
+
+
+>> ASCII to Char conversion:
+    -- ord('a')-97 = 0
+    -- chr(97) = a
+
+>> Strings python:
+    -- immuatable.
+    -- sliceable. Slicing gives you a new string. 
+
+>> String Operations:
+    -- Reverse a string: 'hello world'[::-1] = 'dlrow olleh'.{Extended slice syntax, read below}
+    -- Another way to reverse a string (considerably slow, but readable): ''.join(reversed(s))
+    -- Substring> leaving the first two characters: 'Hello World!'[2:] = 'llo World!'   {Slicing}
+    -- Substring> leaving the last two characters : 'Hello World!'[:-1] = 'Hello Worl'
+    -- Substring> taking the first two characters : 'Hello World!'[:2] = 'He'
+
+>> List operations:
+    -- Cumulative sum: Use accumulate from itertools package.
+            >>>lis = [1,2,3]
+            >>>from itertools import accumulate
+            >>>list(accumulate(lis))
+            >>>(1,3,6)
+    -- Inserting a element `var` at an index `i` in a list li: li.insert(i, var)
+    -- Inserting element at the end of list: li.append(var)
+    -- Slices can also be used to insert elements. An edge case for inserting at start is: li[0:0] = [var].
+        Note: li[0:0] = [var] is less efficient than li.insert(0, var)
+        Note: Inserting element at the start of the list might call for use of collections.deque rather
+              than lists altogether.
+
+>> Extended Slices:
+    -- a[start:end:step] constitue the extended slice syntax. This selects items from 'start' 
+    through 'end-1' with a increment of step.
+    -- Example:
+        >>> seq[:]                # [seq[0],   seq[1],          ..., seq[-1]]
+        >>> seq[low:high]         # [seq[low], seq[low+1],      ..., seq[high-1]]
+        >>> seq[low:high:stride]  # [seq[low], seq[low+stride], ..., seq[high-1]]. 
+        #In case (high-low)%stride != 0, then (high-1) is not last.
+        
+    -- 'abcd'[::-1] = 'dcba'. Negative values creates copy in reverse order. 
+    -- Deletion and assignments can also be performed:
+        >>> a = [2,4,6,8,10]
+        >>> del a[1:10:2]           # Note the end index. a becomes [2, 6, 10]
+        >>> a[0:3:2] = [3, 11]      # a = [3,6,11]
+
+
